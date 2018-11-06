@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/myCSS/StyleSheet1.css" />
+    <link rel="stylesheet" href="~/myCSS/StyleSheet2.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>About Us</title>
+</head>
+<body>
+    <div class="w3-bar w3-black">
+        <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button"><b>Home</b></a>
+        <a href="@Url.Action("Index", "Missions")" class="w3-bar-item w3-button">Missions</a>
+        <a href="@Url.Action("Index", "AboutUs")" class="w3-bar-item w3-button">About Us</a>
+        <a href="@Url.Action("Index", "Contact")" class="w3-bar-item w3-button">Contact</a>
+    </div>
+
+    <div class="row">
+        <header class="business-header">
+            <div class="col-md-12">
+                <h1 class="display-3 mt-4" id="center">About Us</h1>
+            </div>
+        </header>
+    </div>
+
+    <br />
+
+    <div id="center">
+        <h3 id="white">
+            Our mission is to help future missionaries get their questions answered by
+            those who have been to the mission! <br /> <br />
+            If you're going on a mission, we would love to hear any questions you have! <br />
+            And if you've gone on a mission we want to hear your advice!
+        </h3>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <header class="missionaryImage">
+            <div class="col-md-12">             
+            </div>
+        </header>
+    </div>
+
+</body>
+</html>
