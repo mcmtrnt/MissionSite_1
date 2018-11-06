@@ -16,6 +16,7 @@
 </head>
 <body>
     <div class="w3-bar w3-black">
+        <a href="@Url.Action("Index", "Missions")" class="w3-bar-item w3-button"><b>Missions</b></a>
         <a href="@Url.Action("Index", "Missions")" class="w3-bar-item w3-button">Missions</a>
         <a href="@Url.Action("Index", "AboutUs")" class="w3-bar-item w3-button">About Us</a>
         <a href="@Url.Action("Index", "Contact")" class="w3-bar-item w3-button">Contact</a>
@@ -24,7 +25,36 @@
         <div class="jumbotron">
             <h1>Mission Site</h1>
             <p>Get all your questions answered!</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn from other missionaries</a>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="container text-center">
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="~/Graphics/trent.jpg" class="img-circle" alt="Random Name" height="200" width="200">
+                <p id="white"><strong>Trent</strong></p>
+                <p id="white">"Forget yourself and go to work!"</p>
+            </div>
+            <div class="col-sm-3">
+                <img src="~/Graphics/sam.jpg" class="img-circle" alt="Random Name" height="200" width="200">
+                <p id="white"><strong>Sam</strong></p>
+                <p id="white">"The Lord wants all of you in the mission field!"</p>
+            </div>
+            <div class="col-sm-3">
+                <img src="~/Graphics/sperry.jpg" class="img-circle" alt="Random Name" height="200" width="200">
+                <p id="white"><strong>Sperry</strong></p>
+                <p id="white">"After all that has been said, the greatest and most important duty is to preach the gospel!"</p>
+            </div>
+            <div class="col-sm-3">
+                <img src="~/Graphics/ian.jpg" class="img-circle" alt="Random Name" height="200" width="200">
+                <p id="white"><strong>Ian</strong></p>
+                <p id="white">"The most effective missionaries always act out of love!"</p>
+            </div>
         </div>
     </div>
 
