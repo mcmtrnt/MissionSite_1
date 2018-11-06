@@ -96,6 +96,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Graphics\ian.jpg" />
+    <Content Include="Graphics\sam.jpg" />
+    <Content Include="Graphics\sperry.jpg" />
+    <Content Include="Graphics\trent.jpg" />
     <Content Include="Graphics\world.jpg" />
     <Content Include="myCSS\StyleSheet1.css" />
     <Content Include="Scripts\bootstrap.js" />
