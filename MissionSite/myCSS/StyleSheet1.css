@@ -14,3 +14,16 @@
     background-color:antiquewhite;
     height: 80px;
 }
+
+#textboxone {
+    color: black;
+    background-color: white;
+    width: 450px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.emailmessage {
+    height: 300px;
+}
+
