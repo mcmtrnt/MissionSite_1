@@ -1,0 +1,81 @@
+﻿<!--This page displays the mission information
+    Info is passed into this view through the ViewBag-->
+
+@model MissionSite.Models.LeaveQuestion
+@{
+    ViewBag.Title = "MissionView";
+}
+
+<link href="~/myCSS/StyleSheet3.css" rel="stylesheet" />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a href="~/Home/Mission">Mission</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewBag.MissionName</li>
+    </ol>
+</nav>
+
+<!--This is the background image-->
+<body background="~/Graphics/@ViewBag.Background" class="main">
+</body>
+
+
+<!--This passes all of the informaiton into the first info box-->
+<div class="jumbotron" >
+    <h2><u>@ViewBag.MissionName</u></h2>
+    <div class="row">
+        <div class="column">
+            <p>Official Mission Name: @ViewBag.MissionName</p>
+            <p>Mission President Name: @ViewBag.PresidentName</p>
+            <p>Mission Office Address: @ViewBag.MissionAddress</p>
+            <p>Mission Language: @ViewBag.Language</p>
+            <p>Mission Climate: @ViewBag.Climate</p>
+            <p>Dominant Regional Religion: @ViewBag.DominantReligion</p>
+        </div>
+        <div class="column">
+            <img src="@ViewBag.Symbol" alt="Alternate Text" />
+        </div>
+    </div>
+</div>
+
+
+<!--this box contains FAQ's along with an input box for users to answer any questions-->
+<div class="jumbotron">
+    <h2>FAQ's</h2>
+    <p>Q: What kinds of shoes would you recommend for this mission?</p>
+    <p>&emsp; A: Crocs</p>
+    <p>Q: What was the most popular tie style?</p>
+    <p>&emsp; A: Floral</p>
+    <p>Q: What was the average weight gain for a missionary?</p>
+    <p>&emsp; A: 43 pounds</p>
+
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Can you answer this Question?
+        <br />
+        Answer: @Html.TextBoxFor(x => x.sAnswer)
+    </p>
+    <input type="submit" value="Reply" />
+}
+</div>
+
+<!--This box contains an input box for questions to be asked-->
+    <div class="jumbotron">
+
+        @using (Html.BeginForm())
+
+        {@Html.AntiForgeryToken()
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <p>
+            Leave a Question for others to answer.
+            <br />
+            Question: @Html.TextBoxFor(x => x.sQuestion)
+        </p>
+        <input type="submit" value="Submit Question" />
+    }
+    </div>
