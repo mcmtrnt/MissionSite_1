@@ -1,0 +1,26 @@
+﻿@model MissionSite.Models.Mission
+
+
+
+<h2>Mission</h2>
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Select mission @Html.DropDownListFor(x => x.sMission, new[] {
+            new SelectListItem()
+            {Text = "Provo South", Value = "Provo South" },
+            new SelectListItem()
+            {Text = "Provo North", Value = "Provo North" },
+            new SelectListItem()
+            {Text = "Idaho", Value = "Idaho" },
+            }, "Choose an option")
+    </p>
+    <input type="submit" value="Submit Mission" />
+}
+</div>
+
