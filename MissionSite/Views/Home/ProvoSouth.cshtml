@@ -1,0 +1,52 @@
+﻿@model MissionSite.Models.LeaveQuestion
+@{
+    ViewBag.Title = "ProvoSouth";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a href="~/Home/Mission">Mission</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Provo South</li>
+    </ol>
+</nav>
+
+
+<h2>Provo South</h2>
+
+<p>Official Mission Name: @ViewBag.MissionName</p>
+<p>Mission President Name: @ViewBag.PresidentName</p>
+<p>Mission Office Address: @ViewBag.MissionAddress</p>
+<p>Mission Language: @ViewBag.Language</p>
+<p>Dominant Regional Religion: @ViewBag.DominantReligion</p>
+<img src="@ViewBag.Symbol" alt="Alternate Text" />
+
+<div class="jumbotron">
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Can you answer this Question?
+        <br />
+        Answer: @Html.TextBoxFor(x => x.sAnswer)
+    </p>
+    <input type="submit" value="Reply" />
+}
+
+</div>
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Leave a Question for others to answer. 
+        <br />
+        Question: @Html.TextBoxFor(x => x.sQuestion)
+    </p>
+    <input type="submit" value="Submit Question" />
+}
+</div>
+
