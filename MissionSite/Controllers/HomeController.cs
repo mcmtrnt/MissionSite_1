@@ -55,7 +55,7 @@ namespace MissionSite.Controllers
                 ViewBag.MissionAddress = "Middle of Nowhere";
                 ViewBag.Language = "Red Neck";
                 ViewBag.DominantReligion = "Truck Lovers";
-                ViewBag.Symbol = "Some file path";
+                ViewBag.Symbol = "/Content/Idaho2.jpg";
 
                 return View("Idaho");
             }
