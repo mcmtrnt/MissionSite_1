@@ -101,15 +101,20 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Graphics\CityCenter.jpg" />
     <Content Include="Graphics\ian.jpg" />
+    <Content Include="Graphics\IdahoTemp.jpg" />
     <Content Include="Graphics\missionaries.jpg" />
     <Content Include="Graphics\nametags.jpg" />
+    <Content Include="Graphics\ProvoTemp.jpg" />
+    <Content Include="Graphics\ProvoTemp2.jpg" />
     <Content Include="Graphics\sam.jpg" />
     <Content Include="Graphics\sperry.jpg" />
     <Content Include="Graphics\trent.jpg" />
     <Content Include="Graphics\world.jpg" />
     <Content Include="myCSS\StyleSheet1.css" />
     <Content Include="myCSS\StyleSheet2.css" />
+    <Content Include="myCSS\StyleSheet3.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -177,6 +182,7 @@
     <Content Include="Views\Home\ProvoSouth.cshtml" />
     <Content Include="Views\Home\ProvoNorth.cshtml" />
     <Content Include="Views\Home\Idaho.cshtml" />
+    <Content Include="Views\Home\MissionView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
