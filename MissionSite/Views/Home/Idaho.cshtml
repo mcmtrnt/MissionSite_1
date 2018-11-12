@@ -1,23 +1,25 @@
 ﻿@model MissionSite.Models.LeaveQuestion
 @{
-    ViewBag.Title = "ProvoNorth";
+    ViewBag.Title = "Idaho";
 }
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
         <li class="breadcrumb-item"><a href="~/Home/Mission">Mission</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Provo North</li>
+        <li class="breadcrumb-item active" aria-current="page">Idaho</li>
     </ol>
 </nav>
-<h2>Provo North</h2>
+<h2>Idaho</h2>
 
 <p>Official Mission Name: @ViewBag.MissionName</p>
 <p>Mission President Name: @ViewBag.PresidentName</p>
 <p>Mission Office Address: @ViewBag.MissionAddress</p>
 <p>Mission Language: @ViewBag.Language</p>
 <p>Dominant Regional Religion: @ViewBag.DominantReligion</p>
-<img src="@ViewBag.Symbol" alt="Alternate Text" />
-
+<img src="@ViewBag.Symbol" alt="Alternate Text" width="200" />
+<br />
+<br />
 <div class="jumbotron">
     @using (Html.BeginForm())
 
@@ -47,3 +49,4 @@
     <input type="submit" value="Submit Question" />
 }
 </div>
+
