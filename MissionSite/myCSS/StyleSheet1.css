@@ -1,6 +1,6 @@
 ﻿body 
 {
-    background-image:url(/Graphics/world.jpg);
+    background-image:url("~/Graphics/WorldMap1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
 }

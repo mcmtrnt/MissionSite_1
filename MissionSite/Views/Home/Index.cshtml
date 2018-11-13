@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="~/myCSS/StyleSheet1.css" />
+    <link href="~/myCSS/StyleSheet3.css" rel="stylesheet" />
     <title>Mission Answers</title>
 </head>
-<body>
+
+<body background="~/Graphics/WorldMap.jpg" class="main">
     <div class="w3-bar w3-black">
         <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button"><b>Home</b></a>
         <a href="@Url.Action("Mission", "Home")" class="w3-bar-item w3-button">Missions</a>
@@ -31,18 +32,18 @@
     <br />
     <br />
 
-    <div class="container text-center">
+    <div class="container text-center w3-text-white">
         
         <div class="row">
             <div class="col-sm-3">
                 <img src="~/Graphics/trent.jpg" class="img-circle" alt="Random Name" height="200" width="200">
-                <p id="white"><strong>Trent</strong></p>
+                <p id="white" ><strong>Trent</strong></p>
                 <p id="white">"Forget yourself and go to work!"</p>
             </div>
             <div class="col-sm-3">
                 <img src="~/Graphics/sam.jpg" class="img-circle" alt="Random Name" height="200" width="200">
                 <p id="white"><strong>Sam</strong></p>
-                <p id="white">"The Lord wants all of you in the mission field!"</p>
+                <p id="white">"The Lord wants all of<br /> you in the mission field!"</p>
             </div>
             <div class="col-sm-3">
                 <img src="~/Graphics/sperry.jpg" class="img-circle" alt="Random Name" height="200" width="200">
