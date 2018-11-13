@@ -114,6 +114,8 @@
     <Content Include="Graphics\sperry.jpg" />
     <Content Include="Graphics\trent.jpg" />
     <Content Include="Graphics\world.jpg" />
+    <Content Include="Graphics\WorldMap.jpg" />
+    <Content Include="Graphics\WorldMap2.jpg" />
     <Content Include="myCSS\StyleSheet1.css" />
     <Content Include="myCSS\StyleSheet2.css" />
     <Content Include="myCSS\StyleSheet3.css" />

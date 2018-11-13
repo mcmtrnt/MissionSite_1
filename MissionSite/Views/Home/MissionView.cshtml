@@ -45,12 +45,6 @@
 <div class="jumbotron">
     <h2>FAQ's</h2>
     <p>Q: What kinds of shoes would you recommend for this mission?</p>
-    <p>&emsp; A: Crocs</p>
-    <p>Q: What was the most popular tie style?</p>
-    <p>&emsp; A: Floral</p>
-    <p>Q: What was the average weight gain for a missionary?</p>
-    <p>&emsp; A: 43 pounds</p>
-
     @using (Html.BeginForm())
 
     {@Html.AntiForgeryToken()
@@ -59,8 +53,36 @@
         Can you answer this Question?
         <br />
         Answer: @Html.TextBoxFor(x => x.sAnswer)
+        <input type="submit" value="Reply" />
     </p>
-    <input type="submit" value="Reply" />
+
+}
+    <br />
+    <p>Q: What was the most popular tie style?</p>
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Can you answer this Question?
+        <br />
+        Answer: @Html.TextBoxFor(x => x.sAnswer)
+        <input type="submit" value="Reply" />
+    </p>
+
+}
+    <br />
+    <p>Q: What was the average weight gain for a missionary?</p>
+    @using (Html.BeginForm())
+
+    {@Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <p>
+        Can you answer this Question?
+        <br />
+        Answer: @Html.TextBoxFor(x => x.sAnswer)
+        <input type="submit" value="Reply" />
+    </p>
 }
 </div>
 
