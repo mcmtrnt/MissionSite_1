@@ -36,3 +36,7 @@ div.transbox {
     display: table;
     clear: both;
 }
+
+.textcolor{
+    color: white;
+}
