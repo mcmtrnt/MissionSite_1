@@ -4,10 +4,13 @@
  * Description: This is a missions page that helps those getting ready to go out into the mission field.
  */
 
+using MissionSite.DAL;
 using MissionSite.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,11 +18,11 @@ namespace MissionSite.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        private MissionSiteContext db = new MissionSiteContext();
+        private static string currentMissionName;
+
         public ActionResult Index()
         {
-            //testing
-            //testing
             return View();
         }
 
@@ -32,50 +35,102 @@ namespace MissionSite.Controllers
         [HttpPost]
         public ActionResult Mission(Mission oMission)
         {
-            if(oMission.sMission == "Provo South")
-            {
-                ViewBag.MissionName = "Provo South Mission";
-                ViewBag.PresidentName = "Greg Anderson";
-                ViewBag.MissionAddress = "TNRB 240";
-                ViewBag.Language = "C#";
-                ViewBag.DominantReligion = "Accounting";
-                ViewBag.Climate = "Hot summers, cold winters, and an occasional Ganderson Gale";
-                ViewBag.Symbol = "/Content/provo south.png";
-                ViewBag.Background = "CityCenter.jpg";
+            var mission =
+                    db.Database.SqlQuery<Mission>(
+                "Select * " +
+                "FROM Mission " +
+                "WHERE MissionName = '" + oMission.MissionName + "'");
 
-                return View("MissionView");
-            }
-            else if (oMission.sMission == "Provo North")
-            {
-                ViewBag.MissionName = "Provo North Mission";
-                ViewBag.PresidentName = "Ernie";
-                ViewBag.MissionAddress = "TNRB 240";
-                ViewBag.Language = "English";
-                ViewBag.Climate = "As many as there are";
-                ViewBag.DominantReligion = "Project Management";
-                ViewBag.Symbol = "/Content/provo north.png";
-                ViewBag.Background = "ProvoTemp2.jpg";
+            currentMissionName = mission.First().MissionName;
 
-                return View("MissionView");
-            }
-            else if (oMission.sMission == "Idaho")
-            {
-                ViewBag.MissionName = "Idaho Mission";
-                ViewBag.PresidentName = "President Bill Smith";
-                ViewBag.MissionAddress = "Middle of Nowhere";
-                ViewBag.Language = "Red Neck";
-                ViewBag.Climate = "Cloudy with a chance of Potatoes";
-                ViewBag.DominantReligion = "Truck Lovers";
-                ViewBag.Symbol = "/Content/Idaho2.jpg";
-                ViewBag.Background = "IdahoTemp.jpg";
+            ViewBag.Mission = db.Missions.Find(mission.First().MissionID);
 
-                return View("MissionView");
-            }
-            else
-            {
-                return View();
-            }
-           
+                return View("MissionView", db.MissionQuestions.ToList());
+                 
         }
+
+        public ActionResult MissionView()
+        {
+            var mission =
+                    db.Database.SqlQuery<Mission>(
+                "Select * " +
+                "FROM Mission " +
+                "WHERE MissionName = '" + currentMissionName + "'");
+
+            ViewBag.Mission = db.Missions.Find(mission.First().MissionID);
+
+            return View(db.MissionQuestions.ToList());
+        }
+            
+
+        [HttpGet]
+        public ActionResult Reply(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var mission =
+                    db.Database.SqlQuery<Mission>(
+                "Select * " +
+                "FROM Mission " +
+                "WHERE MissionName = '" + currentMissionName + "'");
+
+            MissionQuestion missionQuestion = db.MissionQuestions.Find(id);
+
+            missionQuestion.MissionID = mission.First().MissionID;
+
+            //Need to assign UserID here once login has been set up
+
+            if (missionQuestion == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(missionQuestion);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reply([Bind(Include = "MissionQuestionID,MissionID,UserID,Question,Answer")] MissionQuestion missionQuestion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(missionQuestion).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MissionView");
+            }
+
+            return View(missionQuestion);
+        }
+
+        [HttpGet]
+        public ActionResult PostQuestion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PostQuestion([Bind(Include = "MissionQuestionID,MissionID,UserID,Question,Answer")] MissionQuestion missionQuestion)
+        {
+            if (ModelState.IsValid)
+            {
+                var mission =
+                    db.Database.SqlQuery<Mission>(
+                "Select * " +
+                "FROM Mission " +
+                "WHERE MissionName = '" + currentMissionName + "'");
+
+                missionQuestion.MissionID = mission.First().MissionID;
+
+                db.MissionQuestions.Add(missionQuestion);
+                db.SaveChanges();
+                return RedirectToAction("MissionView");
+            }
+
+            return View(missionQuestion);
+        }
+
     }
 }

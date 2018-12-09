@@ -8,10 +8,10 @@
 
     @using (Html.BeginForm())
 
-    {@Html.AntiForgeryToken()
+    { @Html.AntiForgeryToken()
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     <p>
-        Select mission @Html.DropDownListFor(x => x.sMission, new[] {
+        Select mission @Html.DropDownListFor(x => x.MissionName, new[] {
             new SelectListItem()
             {Text = "Provo South", Value = "Provo South" },
             new SelectListItem()
