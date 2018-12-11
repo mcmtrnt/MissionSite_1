@@ -25,7 +25,7 @@ namespace MissionSite.Models
 
         public string DominantReligion { get; set; }
 
-        //public HttpPostedFile Flag {get; set;}
+        public string Flag {get; set;}
 
     }
 }
