@@ -204,6 +204,9 @@
     <Content Include="Views\MissionQuestions\Index.cshtml" />
     <Content Include="Views\Home\Reply.cshtml" />
     <Content Include="Views\Home\PostQuestion.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
