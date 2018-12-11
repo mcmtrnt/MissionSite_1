@@ -10,10 +10,10 @@
         <h2>FAQ</h2>
     </div>
     <div class="jumbotron">
+        <h2>FAQ's</h2>
 
         @foreach (var item in Model)
         {
-            <h2>FAQ's</h2>
             <p>Q: @item.Question</p>
             <p>Latest Answer: @item.Answer </p>
 
@@ -27,7 +27,6 @@
 
                     @Html.ActionLink("Reply", "Reply", "Home", new { id = item.MissionQuestionID }, null)
 
-                    @*<input type="submit" value="Submit"/>*@
                 </p>
             }
         }
@@ -49,4 +48,7 @@
         @*<input type="submit" value="Submit Question" />*@
     }
     </div>
-    </body>
+
+    <a class="btn btn-primary btn-lg" href="@Url.Action("MissionView", "Home")" role="button">Back to Mission</a>
+
+</body>
