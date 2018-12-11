@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MissionSite.Controllers
 {
@@ -20,6 +21,8 @@ namespace MissionSite.Controllers
     {
         private MissionSiteContext db = new MissionSiteContext();
         private static string currentMissionName;
+        private static string currentUserName;
+        private static string currentPassword;
 
         public ActionResult Index()
         {
@@ -49,7 +52,22 @@ namespace MissionSite.Controllers
                  
         }
 
-        public ActionResult MissionView()
+        [Authorize]
+        public ActionResult FAQ(Mission oMission)
+        {
+            var mission =
+                    db.Database.SqlQuery<Mission>(
+                "Select * " +
+                "FROM Mission " +
+                "WHERE MissionName = '" + currentMissionName + "'");
+
+            ViewBag.Mission = db.Missions.Find(mission.First().MissionID);
+
+            return View(db.MissionQuestions.ToList());
+        }
+
+
+        public ActionResult MissionView(Mission oMission)
         {
             var mission =
                     db.Database.SqlQuery<Mission>(
@@ -130,6 +148,95 @@ namespace MissionSite.Controllers
             }
 
             return View(missionQuestion);
+        }
+
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(FormCollection form, bool rememberMe = false)
+        {
+            String username = form["UserName"].ToString();
+            String password = form["Password"].ToString();
+
+            var LoginID =
+                    db.Database.SqlQuery<User>(
+                "Select * " +
+                "FROM [User] " +
+                "WHERE UserEmail = '" + username + "' AND " +
+                "Password = '" + password + "'");
+
+            if (LoginID.Count() > 0)
+            {
+                //this is how customers log in
+                if (string.Equals(username, LoginID.First().UserEmail) && (string.Equals(password, LoginID.First().Password)))
+                {
+                    FormsAuthentication.SetAuthCookie(username, rememberMe);
+                    currentUserName = username;
+                    currentPassword = password;
+
+                    ViewBag.Name = LoginID.First().FirstName;
+                    ViewBag.CustID = LoginID.First().UserID;
+
+                    return RedirectToAction("Index", "Home"); //cust view
+                }
+
+                else
+                {
+                    return View();
+                }
+
+            }
+
+            else
+            {
+                return View();
+            }
+
+        }
+
+        public ActionResult SignUp()
+        {
+            ViewBag.EmpID = new SelectList(db.Users, "UserID", "UserEmail");
+            ViewBag.Employees = db.Users.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUp([Bind(Include = "UserID,UserEmail,Password,FirstName,LastName")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var currentUser =
+                db.Database.SqlQuery<User>(
+            "Select * " +
+            "FROM [User] " +
+            "WHERE UserEmail = '" + user.UserEmail + "' AND " +
+            "Password = '" + user.Password + "'");
+
+                if (currentUser.Count() > 0)
+                {
+                    //FormsAuthentication.SetAuthCookie(username, rememberMe);
+                    ViewBag.Message = "That username and password are already being used.";
+                    ViewBag.Employees = db.Users.ToList();
+                    return View("SignUp");
+                    //I should inform them that the username or password is already taken.
+
+                }
+
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.EmpID = new SelectList(db.Users, "EmpID", "EmpName", user.UserID);
+            ViewBag.Employees = db.Users.ToList();
+            return View("Index");
         }
 
     }
