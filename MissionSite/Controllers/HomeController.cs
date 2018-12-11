@@ -116,7 +116,7 @@ namespace MissionSite.Controllers
             {
                 db.Entry(missionQuestion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("MissionView");
+                return RedirectToAction("FAQ");
             }
 
             return View(missionQuestion);
