@@ -25,12 +25,14 @@
 </head>
 
 <body background="~/Graphics/WorldMap.jpg" class="main">
-        <div class="w3-bar w3-black">
-            <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button"><b>Home</b></a>
-            <a href="@Url.Action("Mission", "Home")" class="w3-bar-item w3-button">Missions</a>
-            <a href="@Url.Action("Index", "AboutUs")" class="w3-bar-item w3-button">About Us</a>
-            <a href="@Url.Action("Index", "Contact")" class="w3-bar-item w3-button">Contact</a>
-        </div>
+    <div class="w3-bar w3-black">
+        <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button"><b>Home</b></a>
+        <a href="@Url.Action("Mission", "Home")" class="w3-bar-item w3-button">Missions</a>
+        <a href="@Url.Action("Index", "AboutUs")" class="w3-bar-item w3-button">About Us</a>
+        <a href="@Url.Action("Index", "Contact")" class="w3-bar-item w3-button">Contact</a>
+        <a href="@Url.Action("Login", "Home")" class="w3-bar-item w3-button" style="float:right"><b>Log in</b></a>
+        <a href="@Url.Action("SignUp", "Home")" class="w3-bar-item w3-button" style="float:right"><b>Sign Up</b></a>
+    </div>
         <div class="container">
             <div class="jumbotron">
                 <h1>Contact Us</h1>

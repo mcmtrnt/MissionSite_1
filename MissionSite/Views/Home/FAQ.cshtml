@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<MissionSite.Models.MissionQuestion>
+@{
+    ViewBag.Title = "FAQ";
+}
+<link href="~/myCSS/StyleSheet3.css" rel="stylesheet" />
+
+<body background="~/Graphics/WorldMap.jpg" class="main">
+    <div class="textcolor">
+        <h2>FAQ</h2>
+    </div>
+    <div class="jumbotron">
+        <h2>FAQ's</h2>
+
+        @foreach (var item in Model)
+        {
+            <p>Q: @item.Question</p>
+            <p>Latest Answer: @item.Answer </p>
+
+            using (Html.BeginForm("Reply", "Home"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <p>
+                    Can you answer this Question?
+                    <br />
+
+                    @Html.ActionLink("Reply", "Reply", "Home", new { id = item.MissionQuestionID }, null)
+
+                </p>
+            }
+        }
+    </div>
+
+
+    <!--This box contains an input box for questions to be asked-->
+    <div class="jumbotron">
+
+        @using (Html.BeginForm())
+
+        {@Html.AntiForgeryToken()
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <p>
+            Leave a Question for others to answer.
+            <br />
+            @Html.ActionLink("Post Question", "PostQuestion", "Home")
+        </p>
+        @*<input type="submit" value="Submit Question" />*@
+    }
+    </div>
+
+    <a class="btn btn-primary btn-lg" href="@Url.Action("MissionView", "Home")" role="button">Back to Mission</a>
+
+</body>

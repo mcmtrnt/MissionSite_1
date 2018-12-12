@@ -1,0 +1,58 @@
+﻿@model MissionSite.Models.MissionQuestion
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>MissionQuestion</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MissionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MissionID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UserID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Question)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Question)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MissionQuestionID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
